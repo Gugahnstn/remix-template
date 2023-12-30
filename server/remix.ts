@@ -5,7 +5,7 @@ const build = require('./build') as ServerBuild;
 
 exports.handler = createRequestHandler({
   build,
-  getLoadContext(event) {
+  getLoadContext() {
     return {}
   }
 });

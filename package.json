@@ -2,12 +2,23 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
+    "clean": "rm -rf server/build build",
+    "build": "npm run clean && remix build",
     "dev": "remix dev",
-    "start": "remix-serve build",
+    "start": "cross-env NODE_ENV=production arc sandbox",
     "typecheck": "tsc"
   },
+  "arc": {
+    "app": "app-ns",
+    "http": {
+      "/*": {
+        "src": "server",
+        "method": "any"
+      }
+    }
+  },
   "dependencies": {
+    "@architect/functions": "^7.0.0",
     "@remix-run/architect": "^1.19.3",
     "@remix-run/css-bundle": "^1.19.3",
     "@remix-run/node": "^1.19.3",
